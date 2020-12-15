@@ -1,0 +1,81 @@
+
+  <div class="container">
+    <br><br>   
+
+
+
+    <ng-template #activate let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirm Activation</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Activate Card for user: {{modalContent.user_Id}}?</p>
+      </div>
+      <div align="center">
+        <button type="button" class="btn btn-success btn-md rounded-0" (click)="activateCard(modalContent.user_Id)">Activate</button>
+        <br><br>
+      </div>
+    </ng-template>
+
+    <ng-template #reject let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirm Rejection</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Reject Card for user: {{modalContent.user_Id}}?</p>
+      </div>
+      <div align="center">
+        <button type="button" class="btn btn-danger btn-md rounded-0" (click)="rejectCard(modalContent.user_Id)">Reject</button>
+      <br><br>
+      </div>
+    </ng-template>
+
+
+
+    <div class="table-heading"><h2>Accept or Reject User Application</h2></div><br>       
+    <div class="table-responsive">  
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr align="center">
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Bank Name</th>
+          <th>Account Number</th>
+          <th>IFSC Code</th>
+          <th>Decision</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let user of users" align="center">
+          <td>{{user.user_Id}}</td>
+          <td>{{user.first_name}} {{user.last_name}}</td>
+          <td>{{user.bank_name}}</td>
+          <td>{{user.account_No}}</td>
+          <td>{{user.ifsc_Code}}</td>
+          <td>
+            
+              <input type="button" value="Activate" name="activate" id="activate" class="btn btn-success btn-sm rounded-0" (click)="confirmModal(activate,user)">
+              &nbsp;
+              <input type="button" value="Reject" name="reject" id="reject" class="btn btn-danger btn-sm rounded-0" (click)="confirmModal(reject,user)">
+            
+        </td> 
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div>
+  
+    
+  
+  </div>
+<br><br><br><br>
+  
+  
+  

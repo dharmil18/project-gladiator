@@ -1,0 +1,30 @@
+
+.pic1 {
+    height: 270px;
+    width: 180px;
+}
+
+.pic2{
+    height: 270px;
+    width: 150px;
+}
+
+.heading{
+    color: black;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+img {
+    height: 300px;
+    width: 200px
+}
+
+.button-details{
+    margin-top: 30px;
+}
+
+.pricing{
+    font-size: 24px;
+}

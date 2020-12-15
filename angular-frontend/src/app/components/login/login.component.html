@@ -1,0 +1,100 @@
+<!-- 
+<div class="login">
+  <h3 class="text-center text-white pt-5">Login Form</h3>
+  <div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6">
+        <div id="login-box" class="col-md-12">
+          <form id="login-form" class="form" (ngSubmit)="formValues()" method="get" [formGroup]="loginForm">
+            <h3 class="text-center text-primary">Login</h3>
+            <br/>
+            <br/>
+            <div class="form-group">
+              <label for="user_name" class="text-primary required-field">Username:</label><br>
+              <input type="text" name="user_name" id="username" class="form-control"  formControlName="user_name">
+              <span class="help-block" *ngIf="(loginForm.get('user_name').touched ||
+              loginForm.get('user_name').dirty) &&
+              loginForm.get('user_name').errors">
+              <span *ngIf ="loginForm.get('user_name').errors.required && loginForm.dirty" class="text-danger">User Name Required</span>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="password" class="text-primary required-field">Password:</label><br>
+              <input type="password" name="password" id="password" class="form-control" formControlName="password">
+              <span class="help-block" *ngIf="(loginForm.get('password').touched ||
+              loginForm.get('password').dirty) &&
+              loginForm.get('password').errors">
+              <span *ngIf ="loginForm.get('password').errors.required && loginForm.dirty" class="text-danger">Passsword Required</span>
+              </span>
+            </div>
+            <div class="form-group">                                
+              <input type="submit" name="submit" class="btn btn-primary btn-block btn-small" [disabled]="!loginForm.valid" value="Login">
+            </div>
+            <div id="forgot-password-link" class="text-left" style="float:left">
+              <a href="#" class="text-primary">Forgot Password?</a>
+            </div>
+
+            <div id="register-link" class="text-right" style="float:right">
+              <a href="#" class="text-primary">Register Here</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>       
+  </div>
+</div>
+
+
+ -->
+
+ 
+<div id="login">
+  <h3 class="text-center text-white pt-5">Login Form</h3>
+      <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+              <div id="login-column" class="col-md-6 mybackground ">
+                  <div id="login-box" class="col-md-12">
+                      <!-- <form id="login-form" class="form" action="" method="post" [formGroup]="loginForm" (ngSubmit)="submitLogin(this.loginForm.value)"> -->
+                        <form id="login-form" class="form" action="" method="post" [formGroup]="loginForm" (ngSubmit)="login()">
+                          <h3 class="text-center text-primary">Login</h3>
+                          <br/>
+                          <br/>
+                          <div class="form-group fontuser">
+                              <i class="fa fa-user fa-lg"></i>
+                              <input type="text" name="user_name" id="user_name" class="form-control placeholder-padding" placeholder="Username" formControlName="user_name">
+                              <span class="help-block" *ngIf="(loginForm.get('user_name').touched ||
+                              loginForm.get('user_name').dirty) &&
+                              loginForm.get('user_name').errors">
+                              <span *ngIf ="loginForm.get('user_name').errors.required && loginForm.dirty" class="text-danger">User Name Required</span>
+                              </span>
+                          </div>
+
+                          <div class="form-group fontpassword">
+                              <i class="fa fa-key fa-lg"></i>
+                              <input type="password" name="password" id="password" class="form-control placeholder-padding" placeholder="Password" formControlName="password">
+                              <span class="help-block" *ngIf="(loginForm.get('password').touched ||
+                              loginForm.get('password').dirty) &&
+                              loginForm.get('password').errors">
+                              <span *ngIf ="loginForm.get('password').errors.required && loginForm.dirty" class="text-danger">Passsword Required</span>
+                              </span>
+                          </div>
+                          
+                          <div class="form-group">                                
+                              <input type="submit" name="submit" class="btn btn-primary btn-block btn-small" [disabled]="!loginForm.valid" value="Login" >
+                          </div>
+
+                          <div id="forgot-password-link" class="text-left" style="float:left">
+                              <a [routerLink]="['/forgot-password']" class="text-primary">Forgot Password?</a>
+                          </div>
+
+                          <div id="register-link" class="text-right" style="float:right">
+                              <a [routerLink]="['/register']" class="text-primary">Register Here</a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>       
+      </div>
+</div>
+<br><br><br><br>
+

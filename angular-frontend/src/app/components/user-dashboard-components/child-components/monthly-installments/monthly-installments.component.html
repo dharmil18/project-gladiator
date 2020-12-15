@@ -1,0 +1,39 @@
+<div class="main">
+    <br>
+    <div class="table-heading" style="text-align: center;"><h2>Monthly Installments Paid</h2></div><br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Product Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="flag && display">
+                <tr *ngFor="let paidTxn of monthlyPaid; let i=index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ paidTxn.product_name }}</td>
+                    <td>{{ paidTxn.mtxn_date | date }}</td>
+                    <td>{{ paidTxn.amount | currency: 'INR'}}</td>
+                    <td>{{ paidTxn.m_status }}</td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="!flag && display">
+                <tr>
+                    <td>{{ 1 }}</td>
+                    <td>{{ monthlyPaid[0].product_name }}</td>
+                    <td>{{ monthlyPaid[0].mtxn_date | date }}</td>
+                    <td>{{ monthlyPaid[0].amount | currency: 'INR'}}</td>
+                    <td>{{ monthlyPaid[0].m_status }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="noTxn"><span *ngIf="!display" class="text-danger">There are no transactions yet.</span></div>
+        <div align="center" *ngIf="buttonFlag && display">
+            <button type="button" class="btn btn-primary" (click)="displayAll()">Load More</button>
+        </div>
+    </div>
+</div>

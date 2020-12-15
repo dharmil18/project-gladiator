@@ -1,0 +1,33 @@
+<div class="main">
+    <br>
+    <div class="table-heading" style="text-align: center;"><h2>Order History</h2></div><br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Product Name</th>
+                    <th>Product Cost</th>
+                    <th>Monthly Installment</th>
+                    <th>EMI Period</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Processing Fee</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="display">
+                <tr *ngFor="let txn of transactions; let i=index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ txn[2] }}</td>
+                    <td>{{ txn[3] | currency: 'INR' }}</td>
+                    <td>{{ txn[4] | currency: 'INR' }}</td>
+                    <td>{{ txn[5] }}</td>
+                    <td>{{ txn[6] | date }}</td>
+                    <td>{{ txn[7] }}</td>
+                    <td>{{ txn[8] | currency: 'INR' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="noTxn"><span *ngIf="!display" class="text-danger">There are no transactions yet.</span></div>
+    </div>
+</div>

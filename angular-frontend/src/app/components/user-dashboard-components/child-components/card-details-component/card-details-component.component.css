@@ -1,0 +1,18 @@
+.card {
+    font-size: 18px;
+    line-height: 30px;
+    border-radius: 20px;
+    border-color: #0275d8;
+    background-color: #0275d8;
+    color: #ffffff;
+}
+
+.card-gold {
+    background-color: #daa520;
+    border-color: #daa520;
+}
+
+.card-titanium {
+    background-color: #585858;
+    border-color: #585858;
+}

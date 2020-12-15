@@ -1,0 +1,177 @@
+
+  <ng-template #edit let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit User</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+      <form #editform="ngForm" (ngSubmit)="editUser(modalContent,editform)"
+	class="form form-register" align="center">
+
+
+	<div class="form-group">
+		<label for="first_name" class="col-sm-3 control-label">First Name<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="first_name" required
+			value={{modalContent.first_name}} [ngModel]="formObj.first_name" name="first_name" placeholder="{{modalContent.first_name}}" >
+    </div>
+
+
+
+	<div class="form-group">
+		<label for="last_name" class="col-sm-3 control-label ">Last Name<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="last_name" required
+			value={{modalContent.last_name}} [ngModel]="formObj.last_name" name="last_name" placeholder="{{modalContent.last_name}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="phone_number" class="col-sm-3 control-label ">Phone No.<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="phone_number" required maxlength="10" minlength="10" pattern="[0-9]{10}"
+			value={{modalContent.phone_number}} [ngModel]="formObj.phone_number" name="phone_number" placeholder="{{modalContent.phone_number}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="bank_name" class="col-sm-3 control-label ">Bank<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="bank_name" required
+			value={{modalContent.bank_name}} [ngModel]="formObj.bank_name" name="bank_name" placeholder="{{modalContent.bank_name}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="account_no" class="col-sm-3 control-label ">Account No.<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="account_no" required
+			value={{modalContent.account_no}} [ngModel]="formObj.account_no" name="account_no" placeholder="{{modalContent.account_no}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="ifsc_code" class="col-sm-3 control-label ">IFSC Code<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="ifsc_code" required
+			value={{modalContent.ifsc_code}} [ngModel]="formObj.ifsc_code" name="ifsc_code" placeholder="{{modalContent.ifsc_code}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="address_line1" class="col-sm-3 control-label ">Address Line 1<label class="text-danger">*</label> <span class="required-field"></span>
+		</label> <input type="text" id="address_line1" required
+			value={{modalContent.address_line1}} [ngModel]="formObj.address_line1" name="address_line1" placeholder="{{modalContent.address_line1}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="address_line2" class="col-sm-3 control-label ">Address Line 2<label class="text-danger">*</label> </label> <input type="text" id="address_line2" required
+			value={{modalContent.address_line2}} [ngModel]="formObj.address_line2" name="address_line2" placeholder="{{modalContent.address_line2}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="city" class="col-sm-3 control-label ">City<label class="text-danger">*</label> <span
+			class="required-field"></span></label> <input type="text" id="city" required
+			value={{modalContent.city}} [ngModel]="formObj.city" name="city" placeholder="{{modalContent.city}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="state" class="col-sm-3 control-label ">State<label class="text-danger">*</label> <span
+			class="required-field"></span></label> <input type="text" id="state" required
+			value={{modalContent.state}} [ngModel]="formObj.state" name="state" placeholder="{{modalContent.state}}">
+	</div>
+
+
+	<div class="form-group">
+		<label for="zipcode" class="col-sm-3 control-label ">Zipcode<label class="text-danger">*</label> <span
+			class="required-field"></span></label> <input type="text" id="zipcode" maxlength="6" minlength="6" pattern="[0-9]{6}"
+      required value={{modalContent.zipcode}} [ngModel]="formObj.zipcode" name="zipcode" placeholder="{{modalContent.zipcode}}">
+      
+	</div>
+
+  <br>
+
+<div>
+  <label *ngIf="editform.invalid" class="text-danger">(Entering values in all above fields is mandatory)<br>
+  (Zipcode length must be 6 and must comprise only digits)<br>(Phone no. length must be 10 and must comprise only digits)
+  </label>
+</div>
+
+  <div align="center">
+    <button class="btn btn-success btn-md rounded-0" type="submit" [disabled]="editform.invalid">Edit</button>
+  </div>
+
+</form>
+
+<br>
+    </div>
+  
+  
+    
+  </ng-template>
+  
+
+
+  <ng-template #delete let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Confirm Deletion</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Delete user: {{modalContent.user_name}}?</p>
+    </div>
+    <div align="center">
+      <button type="button" class="btn btn-danger btn-md rounded-0" (click)="deleteUser(modalContent.user_name)">Delete</button>
+    <br><br>
+    </div>
+  </ng-template>
+
+
+  <div class="container">
+    <br><br><br><br><br>     
+    <div class="table-heading"><h2>Edit/Delete User Details</h2></div><br> 
+    <div class="table-responsive">     
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr align="center">
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email ID</th>
+          <th>Phone No.</th>
+          <th>Bank Name</th>
+          <th>Account Number</th>
+          <th>IFSC Code</th>
+          <th>Card Type</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let user of allUsers" align="center">
+            <td>{{user.first_name}} {{user.last_name}}</td>
+            <td>{{user.user_name}}</td>
+            <td>{{user.email_id}}</td>
+            <td>{{user.phone_number}}</td>
+            <td>{{user.bank_name}}</td>
+            <td>{{user.account_no}}</td>
+            <td>{{user.ifsc_code}}</td>
+            <td>{{user.card_type}}</td>
+            <td>
+              <form>
+                <input type="button" value="Edit" name="edit" id="edit" class="btn btn-success btn-sm rounded-0" (click)="openModal(edit,user)">
+                  &nbsp;
+                <input type="button" value="Delete" name="delete" id="delete" class="btn btn-danger btn-sm rounded-0" (click)="openModal(delete,user)">
+              </form>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+  <div>
+</div>
+  
+  <br><br><br><br>
+  
+  

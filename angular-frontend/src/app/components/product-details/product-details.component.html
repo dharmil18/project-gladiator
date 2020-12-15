@@ -1,0 +1,81 @@
+<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row" >
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+                          <div class="tab-pane active" id="pic-1"><img src="../../../assets/images/{{productDetails.image}}" /></div>
+						</div>
+						
+					</div>
+					<div class="details col-md-6">
+						<h5 opacity=0.5><a routerLink="/products">Go back</a></h5>
+						<h3 class="product-title">{{ productDetails.product_name }}</h3>
+						<p class="product-description">{{productDetails.internal_memory}} | {{productDetails.display_size}} | {{productDetails.resolution}} | {{productDetails.no_of_camera}} secondary camera | {{productDetails.no_of_front_camera}} front camera | {{productDetails.os}} | {{productDetails.processor}} | {{productDetails.usb}} USB | {{productDetails.color}} Color</p>
+						<h4 class="price">current price: {{productDetails.product_cost | currency:'INR'}}</h4>
+						
+						<div class="table-responsive">
+							<table class="table table-hover" border="1">
+								<thead class="thead-dark">
+									<tr>
+										<th colspan="5" style="text-align: center;">EMI Details</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Period</td>
+										<td>EMI</td>
+										<td>Select Months</td>
+										<td>Eligibility</td>
+										<td>Processing Fee</td>
+									</tr>
+									<tr>
+										<td>3 Months EMI</td>
+										<td>{{productDetails.product_cost / 3 | currency:'INR'}}</td>
+										<td style="text-align: center;">3 Months<input type="radio" name="emiSelect" value="3" (change)="radioChange($event)" [disabled]="!flag1" required></td>
+										<td class="text-success" *ngIf="flag1">Eligible</td>
+										<td class="text-danger" *ngIf="!flag1">Not Eligible</td>
+										<td>{{ productDetails.product_cost * 0.01 | currency:'INR'}}</td>
+									</tr>
+									<tr>
+										<td>6 Months EMI</td>
+										<td>{{productDetails.product_cost / 6 | currency:'INR'}}</td>
+										<td style="text-align: center;">6 Months<input type="radio" name="emiSelect" value="6" (change)="radioChange($event)" [disabled]="!flag2" required></td>
+										<td class="text-success" *ngIf="flag2">Eligible</td>
+										<td class="text-danger" *ngIf="!flag2">Not Eligible</td>
+										<td>{{ productDetails.product_cost * 0.02 | currency:'INR'}}</td>
+									</tr>
+									<tr>
+										<td>9 Months EMI</td>
+										<td>{{productDetails.product_cost / 9 | currency:'INR'}}</td>
+										<td style="text-align: center;">9 Months<input type="radio" name="emiSelect" value="9" (change)="radioChange($event)" [disabled]="!flag3" required></td>
+										<td class="text-success" *ngIf="flag3">Eligible</td>
+										<td class="text-danger" *ngIf="!flag3">Not Eligible</td>
+										<td>{{ productDetails.product_cost * 0.03 | currency:'INR'}}</td>
+									</tr>
+									<tr>
+										<td>12 Months EMI</td>
+										<td>{{productDetails.product_cost / 12 | currency:'INR'}}</td>
+										<td style="text-align: center;">12 Months<input type="radio" name="emiSelect" value="12" (change)="radioChange($event)" [disabled]="!flag4" required></td>
+										<td class="text-success" *ngIf="flag4">Eligible</td>
+										<td class="text-danger" *ngIf="!flag4">Not Eligible</td>
+										<td>{{ productDetails.product_cost * 0.04 | currency:'INR'}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="noLogIn"><span *ngIf="!isUserLoggedIn" class="text-danger">Please Log In to buy.<a [routerLink]="['/login']">Login Here</a></span></div>
+						<div class="noLogIn"><span *ngIf="cardPending" class="text-danger">Your card isn't activated yet.</span></div>
+						<div class="noLogIn"><span *ngIf="rejected" class="text-danger">Your card has been rejected. You cannot buy products.</span></div>
+						<div class="w3-show-inline-block">
+							<button class="btn btn-primary faq-button" routerLink='/product-faq'>FAQs</button>
+							<button class="btn btn-success submit-button" (click)="buyProduct()" [disabled]="!buyNowFlag">BUY NOW</button>
+							<button class="btn btn-primary faq-button" routerLink='/tnc'>T&C</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br><br>

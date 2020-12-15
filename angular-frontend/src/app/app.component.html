@@ -1,0 +1,25 @@
+<div>
+  <!-- Navbar -->
+  <header class="header sticky-top">
+    <a [routerLink]="['/home']" class="logo">MobileMania</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn">
+      <span class="navicon"></span>
+    </label>
+    <ul class="menu">
+      <li *ngIf="showProduct"><a [routerLink]="['/products']">Products</a></li>
+      <li *ngIf="isUserLoggedIn"><a [routerLink]="['/user-dashboard']">User Dashboard</a></li>
+      <li *ngIf="isAdmin"><a [routerLink]="['/admin-dashboard']">Admin Dashboard</a></li>
+      <li *ngIf="showRegisterLogin"><a [routerLink]="['/register']">Register</a></li>
+      <li *ngIf="showRegisterLogin"><a [routerLink]="['/login']">Login</a></li>
+      <li *ngIf="isAdmin"><a [routerLink]="['/edit-delete-users']">Edit/Delete Users</a></li>
+      <li *ngIf="showLogout"><a (click)="logout()">Logout</a></li>
+    </ul>
+  </header>
+  <br><br><br><br>
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <footer-comp></footer-comp>
+</footer>

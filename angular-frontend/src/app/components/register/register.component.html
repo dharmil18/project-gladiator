@@ -1,0 +1,293 @@
+<!-- <div>
+    <h2 class="text-center text-primary">{{message}}</h2>
+    </div> -->
+
+<div id="registration">
+    <br>
+    <div class="container">
+        <div id="registration-row" class="row justify-content-center align-items-center">
+            <div id="registration-column" class="col-md-6 mybackground ">
+                <div id="registration-box" class="col-md-12">
+                    <form id="registration-form" class="form" role="form" action="" method="post" [formGroup]="registrationForm" (ngSubmit)="onSubmit(this.registrationForm.value);registrationForm.reset()" ngNativeValidate >
+                        <h3 class="text-center text-primary">Registration</h3>
+                        <br/>
+                        <br/>   
+
+                        <div class="form-group">
+                            <br>
+                            <label for="first_name" class="col-sm-6 control-label text-primary">First Name<span class="required-field"></span></label>
+
+                                <input  type="text" id="first_name" required minlength="1" maxlength="20" placeholder="First Name" class="form-control" formControlName="first_name" autofocus>
+                                <span class="help-block" *ngIf="(registrationForm.get('first_name').touched ||
+                                registrationForm.get('first_name').dirty) &&
+                                registrationForm.get('first_name').errors">
+                                <span *ngIf ="registrationForm.get('first_name').errors.required && registrationForm.dirty" class="text-danger">First name Required</span>
+                                <span *ngIf="registrationForm.get('first_name').errors.minlength || registrationForm.get('first_name').errors.maxlength" class="text-danger">
+                                    First Name must be greater than 1 character
+                                </span>
+                                </span>
+                            
+                        </div>
+                                              
+                        <div class="form-group" >
+                            <br>
+                            <label for="last_name" class="col-sm-6 control-label text-primary">Last Name<span class="required-field"></span></label>
+                            
+                                <input  type="text" id="last_name" required minlength="1" maxlength="20" placeholder="Last Name" class="form-control" formControlName="last_name" autofocus>
+                                <span class="help-block" *ngIf="(registrationForm.get('last_name').touched ||
+                                registrationForm.get('last_name').dirty) &&
+                                registrationForm.get('last_name').errors">
+                                <span *ngIf ="registrationForm.get('last_name').errors.required && registrationForm.dirty" class="text-danger">Last name Required</span>
+                                <span *ngIf="registrationForm.get('last_name').errors.minlength || registrationForm.get('last_name').errors.maxlength" class="text-danger">
+                                Last Name must be greater than 1 character
+                                </span>
+                                </span>
+                            
+                        </div>
+                                               
+                        <div class="form-group" >
+                            <br>
+                            <label for="email_id" class="col-sm-6 control-label text-primary">Email<span class="required-field"></span> </label>
+                            
+                                <input type="email" id="email_id" required email placeholder="Email" class="form-control" formControlName="email_id" name= "email_id">
+                                <span class="help-block" *ngIf="(registrationForm.get('email_id').touched ||
+                                registrationForm.get('email_id').dirty) &&
+                                registrationForm.get('email_id').errors">
+                                <span *ngIf ="registrationForm.get('email_id').errors.required && registrationForm.dirty" class="text-danger">Email Required</span>
+                                <span *ngIf="registrationForm.get('email_id').errors.email " class="text-danger">Email is Invalid</span>
+                                </span>
+                            
+                        </div>
+
+                        <div class="form-group" >
+                            <br>
+                            <label for="phone_number" class="col-sm-6 control-label text-primary">Phone number <span class="required-field"></span></label>
+                            
+                                <input (keypress)="keyPress($event)"  type="text" id="phone_number" required pattern minlength="10" maxlength="10" placeholder="Phone number" class="form-control" formControlName="phone_number" >  <!--[ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"-->   
+                                <span class="help-block" *ngIf="(registrationForm.get('phone_number').touched ||
+                                registrationForm.get('phone_number').dirty) &&
+                                registrationForm.get('phone_number').errors">
+                                <span *ngIf= "registrationForm.get('phone_number').errors.required && registrationForm.dirty" class="text-danger">Phone number is Required</span>
+                                <span *ngIf="registrationForm.get('phone_number').errors.pattern || registrationForm.get('phone_number').errors.minlength || registrationForm.get('phone_number').errors.maxlength" class="text-danger">
+                                    Phone number must contain at least 10 numbers
+                                </span>
+                                </span>
+                            
+                        </div> 
+                    
+                        <div class="form-group" >
+                            <br> 
+                            <label for="user_name" class="col-sm-6 control-label text-primary">User Name<span class="required-field"></span></label>
+                            
+                                <input type="text" id="user_name" required  placeholder="User Name" class="form-control" formControlName="user_name" autofocus>
+                                <span class="help-block" *ngIf="(registrationForm.get('user_name').touched ||
+                                registrationForm.get('user_name').dirty) &&
+                                registrationForm.get('user_name').errors">
+                                <span *ngIf ="registrationForm.get('user_name').errors.required && registrationForm.dirty" class="text-danger">User Name Required</span>
+                                </span>
+                            
+                        </div>
+                    
+                        <div class="form-group" >
+                            <br>
+                            <label for=" password_hash" class="col-sm-6 control-label text-primary">Password<span class="required-field"></span> </label>
+                            
+                                <input name="password_hash" input type="password" id="password_hash" required minlength="8" placeholder="Password" class="form-control" formControlName="password_hash">
+                                <span class="help-block" *ngIf="(registrationForm.get('password_hash').touched ||
+                                registrationForm.get('password_hash').dirty) &&
+                                registrationForm.get('password_hash').errors">
+                                <span *ngIf ="registrationForm.get('password_hash').errors.required && registrationForm.dirty" class="text-danger">Password Required</span>
+                                <span *ngIf="registrationForm.get('password_hash').errors.minlength " class="text-danger">
+                                    Password must be atleast 8 characters long
+                                </span>
+                            </span>
+                            
+                        </div>
+
+                        <div class="form-group" >
+                            <br>
+                            <label for="confirmPassword" class="col-sm-6 control-label text-primary">Confirm Password<span class="required-field"></span> </label>
+                            
+                                <input  name="confirmPassword" input type="password" id="confirmPassword" appConfirmEqualValidator="password_hash" required placeholder="Password" class="form-control" formControlName="confirmPassword">
+                                <span class="help-block" *ngIf="(registrationForm.get('confirmPassword').touched ||
+                                registrationForm.get('confirmPassword').dirty) &&
+                                registrationForm.get('confirmPassword').errors">
+                                <span *ngIf ="registrationForm.get('confirmPassword').errors.required && registrationForm.dirty" class="text-danger">Confirm Password Required</span>
+                                <span class="help-block"
+                                *ngIf="registrationForm.get('confirmPassword').touched && registrationForm.get('confirmPassword').errors?.notEqual &&
+                                !registrationForm.get('confirmPassword').errors?.required" class="text-danger">
+                                    Password and Confirm Password does not match
+                                </span>
+                                </span>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label for="bank_name" class="col-sm-6 control-label text-primary">Bank Name<span class="required-field"></span></label>
+                            
+                                <input  type="text" id="bank_name" required placeholder="Please write your Bank name" class="form-control" formControlName="bank_name">
+                                <span class="help-block" *ngIf="(registrationForm.get('bank_name').touched ||
+                                registrationForm.get('bank_name').dirty) &&
+                                registrationForm.get('bank_name').errors">
+                                <span *ngIf ="registrationForm.get('bank_name').errors.required && registrationForm.dirty" class="text-danger">Bank Name Required</span>
+                                </span>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label for="account_no" class="col-sm-8 control-label text-primary">Savings Bank Account No <span class="required-field"></span></label>
+                            
+                                <input type="text" id="account_no" required minlength="12" maxlength="12" placeholder="Please write your Bank Account No" class="form-control" formControlName="account_no">
+                                <span class="help-block" *ngIf="(registrationForm.get('account_no').touched ||
+                                registrationForm.get('account_no').dirty) &&
+                                registrationForm.get('account_no').errors">
+                                <span *ngIf ="registrationForm.get('account_no').errors.required && registrationForm.dirty" class="text-danger">Account Number Required</span>
+                                <span *ngIf="registrationForm.get('account_no').errors.minlength || registrationForm.get('account_no').errors.maxlength" class="text-danger">
+                                   Account Number should consist of 12 characters
+                                </span>    
+                            
+                            </span>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label for="ifsc_code" class="col-sm-6 control-label text-primary">IFSC Code <span class="required-field"></span></label>
+                            
+                                <input  type="text" id="ifsc_code" required placeholder="Please write your IFSC code" class="form-control" formControlName="ifsc_code">
+                                <span class="help-block" *ngIf="(registrationForm.get('ifsc_code').touched ||
+                                registrationForm.get('ifsc_code').dirty) &&
+                                registrationForm.get('ifsc_code').errors">
+                                <span *ngIf ="registrationForm.get('ifsc_code').errors.required && registrationForm.dirty" class="text-danger">IFSC code Required</span>
+                                </span>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label for="address_line1" class="col-sm-6 control-label text-primary">Address Line 1<span class="required-field"></span></label>
+                            
+                                <input  type="text" id="address_line1" required placeholder="Please write your address" class="form-control" formControlName="address_line1">
+                                <span class="help-block" *ngIf="(registrationForm.get('address_line1').touched ||
+                                registrationForm.get('address_line1').dirty) &&
+                                registrationForm.get('address_line1').errors">
+                                <span *ngIf ="registrationForm.get('address_line1').errors.required && registrationForm.dirty" class="text-danger">Address line 1 Required</span>
+                                </span>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label for="address_line2" class="col-sm-6 control-label text-primary">Address Line 2<span class="required-field"></span></label>
+                            
+                                <input  type="text" id="address_line2" required placeholder="Please write your address" class="form-control" formControlName="address_line2">
+                                <span class="help-block" *ngIf="(registrationForm.get('address_line2').touched ||
+                                registrationForm.get('address_line2').dirty) &&
+                                registrationForm.get('address_line2').errors">
+                                <span *ngIf ="registrationForm.get('address_line2').errors.required && registrationForm.dirty" class="text-danger">Address line 2 Required</span>
+                                </span>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label for="city" class="col-sm-6 control-label text-primary">City<span class="required-field"></span></label>
+                            
+                                <input  type="text" id="city" required placeholder="Please write your City" class="form-control" formControlName="city"> 
+                                <span class="help-block" *ngIf="(registrationForm.get('city').touched ||
+                                registrationForm.get('city').dirty) &&
+                                registrationForm.get('city').errors">
+                                <span *ngIf ="registrationForm.get('city').errors.required && registrationForm.dirty" class="text-danger">City name Required</span>
+                                </span>   
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state" class="col-sm-3 control-label text-primary">State<span class="required-field"></span></label>
+                                
+                        
+                        <select required class="custom-select" (change)="changeState($event)" formControlName="state">
+                            <option value="" disabled>Choose your State</option>
+                            <option *ngFor="let stateNew of State" [ngValue]="stateNew">{{stateNew}}</option>
+                        </select>
+                        <span class="help-block" *ngIf="(registrationForm.get('state').touched ||
+                            registrationForm.get('state').dirty) &&
+                            registrationForm.get('state').errors">
+                            <span *ngIf ="registrationForm.get('state').errors.required && registrationForm.dirty" class="text-danger">State name Required</span>
+                            </span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <br>
+                            <label for="zipcode" class="col-sm-6 control-label text-primary">Zipcode<span class="required-field"></span></label>
+                            
+                                <input (keypress)="keyPress($event)" type="text" id="zipcode"  required pattern minlength="6" maxlength="6" placeholder="Please write your Zip code" class="form-control" formControlName="zipcode">
+                                <span class="help-block" *ngIf="(registrationForm.get('zipcode').touched ||
+                                registrationForm.get('zipcode').dirty) &&
+                                registrationForm.get('zipcode').errors">
+                                <span *ngIf ="registrationForm.get('zipcode').errors.required && registrationForm.dirty" class="text-danger">Zip code Required</span>
+                                <span *ngIf="registrationForm.get('zipcode').errors.pattern || registrationForm.get('zipcode').errors.minlength || registrationForm.get('zipcode').errors.maxlength" class="text-danger">
+                                    Zip code must be 6 characters long
+                                </span>
+                                </span> 
+                        </div>
+
+                        <br>
+                                            
+                        <div class="form-group">
+                            <label class="control-label col-md-6 text-primary">Card Type<span class="required-field"></span></label>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="radio-inline text-primary">
+                                            <input  type="radio" id="GoldRadio"  value="Gold" required class="form-control" formControlName="card_type" >Gold
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="radio-inline text-primary">
+                                            <input  type="radio" id="TitaniumRadio"  value="Titanium" required class="form-control" formControlName="card_type">Titanium  
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3 text-danger">
+                                <span class="help-block" *ngIf="registrationForm.invalid">*Required fields</span>  
+                            </div>
+                        </div>
+
+                        <br>
+                        
+                        <div class="col-md-12"> 
+                            <input type="submit" name="submit" class="btn btn-primary btn-small btn-block" [disabled]="registrationForm.invalid"  value="Register">  <!--  [disabled]="!registrationForm.valid" -->
+                            </div>
+            
+                        <br>
+
+                        <div class="col-md-12">                                
+                            <input type="submit" name="submit" class="btn btn-outline-primary btn-small btn-block" (click)="onReset()" value="Reset">
+                        </div>
+                            
+                        <br>
+
+                        <div id="login-link" class="text-center margintop">
+                            <a [routerLink]="['/login']" class="text-primary">Already a member? Login</a>
+                        </div>
+
+                        <br/>
+                        <div>
+                            <span class="text-danger text-center justify-content">By clicking on <b>Register</b> you accept to pay the  registration fee of ₹500 for the Gold card and ₹800 for the Titanium card as per your choice</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>    
+<br><br><br><br>                  
+

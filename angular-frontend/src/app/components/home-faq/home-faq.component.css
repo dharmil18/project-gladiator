@@ -1,0 +1,22 @@
+h2{
+    background-color: #eee;
+    padding: 10px;
+}
+
+.faq {
+    max-width: 1000px;
+    justify-content: space-evenly;
+    border: 1px solid transparent;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.faq p {
+    font-size: 18px;
+}
+
+.mybackground{
+  background-color: #f8f9fa;
+  padding: 40px 40px 20px 40px;
+}
+

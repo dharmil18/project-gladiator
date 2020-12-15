@@ -1,0 +1,25 @@
+<h2 align="center">User Dashboard</h2>
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-auto mb-3">
+            <div class="card {{ cssClass }}" style="width: 25rem;">
+                <div class="card-body">
+                  <p class="card-text"><b>Name: </b>{{ cardHolder }}</p>
+                  <p class="card-text"><b>Card Number: </b>{{ cardDetails.card_no }}</p>
+                  <p class="card-text"><b>Valid Till: </b>{{ cardDetails.expiry_date }}</p>
+                  <p class="card-text"><b>Status: </b>{{ cardDetails.status }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto mb-3">
+            <div class="card {{ cssClass }}" style="width: 25rem;">
+                <div class="card-body">
+                  <p class="card-text"><b>Total Limit: </b>{{ cardDetails.limit | currency: 'INR' }}</p>
+                  <p class="card-text"><b>Credit Used: </b>{{ balanceCredit | currency: 'INR' }}</p>
+                  <p class="card-text"><b>Remaining Credit: </b>{{ cardDetails.limit - balanceCredit | currency: 'INR' }}</p>
+                  <p class="card-text"><b>Card Type: </b>{{ cardDetails.card_type }}</p>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
